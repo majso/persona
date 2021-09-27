@@ -2,4 +2,4 @@
 
 Private social hub with RSS reader and Notes
 
-C#? Vue?
+C#? Svelte?
