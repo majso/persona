@@ -2,4 +2,8 @@
 
 Private social hub with RSS reader and Notes
 
-C#? Svelte?
+C#? 
+
+Svelte
+---
+in progress
