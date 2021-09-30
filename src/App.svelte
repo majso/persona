@@ -1,6 +1,10 @@
 <script>
-	export let name;
 	import Folder from './Folder.svelte';
+	let title = "World";
+
+	let subs = 0;
+	const addSub = () => subs++;
+
 	let root = [
 		{
 			type: 'folder',
@@ -39,21 +43,21 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<h2>Feeds</h2>
-	<Folder name="Tech" files={root} expanded/>
-	<Folder name="Science" files={root} expanded/>
-	<Folder name="News" files={root} expanded/>
+	<div class="container">
+		<h1>Hello {title}!</h1>
+		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+		<h2>Feeds ({subs})</h2>
+		<div class="button" on:click={addSub}>+</div>
+		<div class="left">
+			<Folder name="Tech" files={root} expanded/>
+			<Folder name="Science" files={root} expanded/>
+			<Folder name="News" files={root} expanded/>
+		</div>
+	</div>
+
 </main>
 
-<!-- <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+<style>
 
 	h1 {
 		color: #ff3e00;
@@ -62,9 +66,18 @@
 		font-weight: 100;
 	}
 
+	.container {
+		padding: 8px;
+	}
+
+	.left {
+
+
+	}
+
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
 		}
 	}
-</style> -->
+</style> 
