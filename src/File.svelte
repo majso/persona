@@ -1,9 +1,13 @@
 <script>
 	export let name;
 	$: type = name.slice(name.lastIndexOf('.') + 1);
+
+	const onDelete = () => dispatch("removefile", name);
+
 </script>
 
 <span style="background-image: url(icons/{type}.svg)">{name}</span>
+<button class="button" on:click={onDelete}>x</button>
 
 <style>
 	span {

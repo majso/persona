@@ -9,6 +9,11 @@
 	function toggle() {
 		expanded = !expanded;
 	}
+	
+	const removeFile = e => {
+    	files = files.filter(file => file.name !== e.detail);
+  	};
+
 </script>
 
 <span class:expanded on:click={toggle}>{name}</span>
@@ -20,8 +25,10 @@
 				{#if file.type === 'folder'}
 					<svelte:self {...file}/>
 				{:else}
-					<File {...file}/>
+					<File {...file} 
+					on:removefile={removeFile} />
 				{/if}
+				
 			</li>
 		{/each}
 	</ul>
