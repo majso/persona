@@ -46,8 +46,7 @@
 	<div class="container">
 		<h1>Hello {title}!</h1>
 		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-		<h2>Feeds ({subs})</h2>
-		<div class="button" on:click={addSub}>+</div>
+		<h2>Feeds ({subs})</h2><div class="button" on:click={addSub}>Subscription+</div>
 		<div class="left">
 			<Folder name="Tech" files={root} expanded/>
 			<Folder name="Science" files={root} expanded/>
