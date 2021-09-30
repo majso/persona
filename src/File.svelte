@@ -1,7 +1,11 @@
 <script>
+	import { createEventDispatcher } from "svelte";
+
 	export let name;
 	$: type = name.slice(name.lastIndexOf('.') + 1);
 
+
+    const dispatch = createEventDispatcher();
 	const onDelete = () => dispatch("removefile", name);
 
 </script>

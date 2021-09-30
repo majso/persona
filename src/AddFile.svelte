@@ -6,7 +6,7 @@ const dispatch = createEventDispatcher();
 let file =
 {
 	type: 'file', 
-    name: "" 
+  name: "" 
 }
 
 const onSubmit = e => {
