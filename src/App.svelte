@@ -41,7 +41,10 @@
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<Folder name="Feeds" files={root} expanded/>
+	<h2>Feeds</h2>
+	<Folder name="Tech" files={root} expanded/>
+	<Folder name="Science" files={root} expanded/>
+	<Folder name="News" files={root} expanded/>
 </main>
 
 <!-- <style>
