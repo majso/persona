@@ -3,6 +3,8 @@ import { createEventDispatcher} from 'svelte';
 
 const dispatch = createEventDispatcher();
 
+
+
 let file =
 {
 	type: 'file', 
@@ -13,8 +15,8 @@ const onSubmit = e => {
     e.preventDefault();
     dispatch("addfile", file);
     file = {
-      type: 'file',
-      name: ""
+      type: 'file', 
+      name: "" 
     };
   };
 </script>
