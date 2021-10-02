@@ -1,17 +1,17 @@
 <script>
-	import { createEventDispatcher } from "svelte";
-
 	export let name;
-	$: type = name.slice(name.lastIndexOf('.') + 1);
 
+	const onDelete = (name) => {
 
-    const dispatch = createEventDispatcher();
-	const onDelete = () => dispatch("removefile", name);
+		console.log(name);
+	}
 
 </script>
 
-<span style="background-image: url(icons/{type}.svg)">{name}</span>
-<button class="button" on:click={onDelete}>x</button>
+<span>{name}</span>
+<span class="delete" on:click={() => {onDelete(name)}}></span>
+
+
 
 <style>
 	span {

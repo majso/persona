@@ -9,24 +9,19 @@
 	function toggle() {
 		expanded = !expanded;
 	}
-	
-	const removeFile = e => {
-    	files = files.filter(file => file.name !== e.detail);
-  	};
 
 </script>
 
 <span class:expanded on:click={toggle}>{name}</span>
 
 {#if expanded}
-	<ul transition:slide={{duration:300}}>
+	<ul class="menu-list" transition:slide={{duration:300}}>
 		{#each files as file}
 			<li>
 				{#if file.type === 'folder'}
 					<svelte:self {...file}/>
 				{:else}
-					<File {...file} 
-					on:removefile={removeFile} />
+					<File {...file} />
 				{/if}
 				
 			</li>
