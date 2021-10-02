@@ -9,7 +9,7 @@
 </script>
 
 <span>{name}</span>
-<span class="delete" on:click={() => {onDelete(name)}}></span>
+<span on:click={() => {onDelete(name)}}></span>
 
 
 

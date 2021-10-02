@@ -4,7 +4,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item brand-text" href="../index.html">
-      Bulma Admin
+      persona
     </a>
             <div class="navbar-burger burger" data-target="navMenu">
                 <span></span>
