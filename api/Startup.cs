@@ -38,6 +38,17 @@ namespace api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "persona api", Version = "v1" });
             });
+            services.AddCors(feature => {
+                feature.AddPolicy(
+                    "GlobalCorsPolicy",
+                    builder => builder
+                                    .SetIsOriginAllowed((host) => true)
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod()
+                                    .AllowAnyOrigin()
+                                    .AllowCredentials()
+                                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,22 +2,19 @@
 	import Folder from './Folder.svelte';
 	import Modal from './Modal.svelte';
 	import AddFile from './AddFile.svelte';
+	import { onMount } from "svelte";
 
 	let showModal = false;
 	const triggerModal = () => {
 		showModal = !showModal;
 	}
+	let files = []
+	const apiURL = "https://localhost:5001/api/items";
+	onMount(async function() {
+        const response = await fetch(apiURL);
+        files = await response.json();
+    });
 
-	let files =[
-		{
-		type: 'file', 
-		name: "Jozko" 
-	},
-	{
-		type: 'file', 
-		name: "Dezko" 
-	}
-	]
 
 	const addFile = (e) => {
 
