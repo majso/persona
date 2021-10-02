@@ -36,7 +36,7 @@ namespace api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApp", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "persona api", Version = "v1" });
             });
         }
 
@@ -47,7 +47,7 @@ namespace api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoApp v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "persona api v1"));
             }
 
             app.UseHttpsRedirection();

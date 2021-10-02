@@ -1,10 +1,16 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace api.Models
  {
     public class ItemData
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public bool Done { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Url { get; set; }
     }
  }   

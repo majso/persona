@@ -6,16 +6,13 @@ using api.Models;
 
 namespace api.Controllers
 {
-    [Route("api/[controller]")] // api/todo
+    [Route("api/[controller]")] 
     [ApiController]
     public class TodoController : ControllerBase
     {
         private readonly ApiDbContext _context;
 
-        public TodoController(ApiDbContext context)
-        {   
-            _context = context;
-        }
+        public TodoController(ApiDbContext context) => _context = context;
 
         [HttpGet]
         public async Task<IActionResult> GetItems()
@@ -60,9 +57,8 @@ namespace api.Controllers
             if(existItem == null)
                 return NotFound();
 
-            existItem.Title = item.Title;
-            existItem.Description = item.Description;
-            existItem.Done = item.Done;
+            existItem.Name = item.Name;
+            existItem.Url = item.Url;
             
             // Implement the changes on the database level
             await _context.SaveChangesAsync();
