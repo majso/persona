@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using api.Data;
 using api.Models;
 
-namespace TodoApp.Controllers
+namespace api.Controllers
 {
     [Route("api/[controller]")] // api/todo
     [ApiController]
