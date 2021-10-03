@@ -18,6 +18,8 @@ namespace api
 {
     public class Startup
     {
+        readonly string MyAllowedSpecificOrigins = "_myAllowedSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,7 +29,18 @@ namespace api
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowedSpecificOrigins,
+                                builder =>
+                                {
+                                    builder.WithOrigins("http://localhost:5555",
+                                                        "https://localhost:5555")
+                                                        .AllowAnyHeader()
+                                                        .AllowAnyMethod();
+                                });
+            });
             services.AddDbContext<ApiDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")
@@ -38,17 +51,7 @@ namespace api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "persona api", Version = "v1" });
             });
-            services.AddCors(feature => {
-                feature.AddPolicy(
-                    "GlobalCorsPolicy",
-                    builder => builder
-                                    .SetIsOriginAllowed((host) => true)
-                                    .AllowAnyHeader()
-                                    .AllowAnyMethod()
-                                    .AllowAnyOrigin()
-                                    .AllowCredentials()
-                                );
-            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +67,8 @@ namespace api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowedSpecificOrigins);
 
             app.UseAuthorization();
 

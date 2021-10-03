@@ -17,7 +17,10 @@ html, body {
 	font-weight: 700;
   }
   .menu {
-	padding: 4rem 1rem 1rem 1rem;
+	padding: 4rem 1rem 1rem 2rem;
+  }
+  .menu ion-icon {
+    font-size: 16px;
   }
   .menu-label {
 	color: #8F99A3;
@@ -25,43 +28,20 @@ html, body {
   .menu-list {
 	color: #0F1D38;
   }
+  .menu-item {
+    color: #0F1D38;
+    font-size: 16px;
+  }
   .breadcrumb{
 	margin: 1rem 1rem 0 0;
   }
-  .card {
-	margin-bottom: 2rem;
+  .card .card-content {
+	font-size: 12px;
+  min-height: 25px;
+  max-height: 100px;
+  padding-bottom: 0rem;
   }
-  .card-header-title {
-	color: #8F99A3;
-	font-weight: 400;
+  .card ion-icon {
+    font-size: 24px;
   }
-  .info-tiles {
-	margin: 1rem 0;
-  }
-  .info-tiles .subtitle {
-	font-weight: 300;
-	color: #8F99A3;
-  }
-  .hero.welcome.is-info {
-	background: #36D1DC;
-	background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
-	background: linear-gradient(to right, #5B86E5, #36D1DC);
-  }
-  .hero.welcome .title, .hero.welcome .subtitle {
-	color: hsl(192, 17%, 99%);
-  }
-  .card .content {
-	font-size: 14px;
-  }
-  .card-footer-item {
-	font-size: 14px;
-	font-weight: 700;
-	color: #8F99A3;
-  }
-  .card-table .table {
-	margin-bottom: 0;
-  }
-  .events-card .card-table {
-	max-height: 250px;
-	overflow-y: scroll;
-  }
+
