@@ -26,18 +26,19 @@
 
 <div class="column is-2">
 	<aside class="menu is-hidden-mobile aside">
-			<p class="menu-label">
+		<ul>
+			<li class="menu-label">
 				Dashboard
-			</p>
-			<p class="menu-label">
+			</li>
+			<li class="menu-label">
 				Saved Webpages
-			</p>
-			<p class="menu-label">
+			</li>
+			<li class="menu-label">
 				Notes
-			</p>
-			<p class="menu-label">
+			</li>
+			<li class="menu-label">
 				Liked Articles
-			</p>
+			</li>
 			<div class="menu-label icon-text">
 				Folders
 				<span class="icon is-clickable">
@@ -47,18 +48,32 @@
 			<Modal {showModal} on:click={triggerModal}>
 			</Modal>
 			<Folder name="RSS Feeds" files={files} expanded />
-			<p class="menu-label">
+			<li class="menu-label">
 				Settings
-			</p>
-			<p class="menu-label">
+			</li>
+			<li class="menu-label">
 				About
-			</p>
-			<p class="menu-label">
+			</li>
+			<li class="menu-label">
 				Donate
-			</p>
+			</li>
+		</ul>
 	</aside>
 </div>
 
 <style>
+	ul {
+		padding: 0.2em 0 0 0.5em;
+		margin: 0 0 0 0.7em;
+		list-style: none;
+		border-left: 1px solid #d9dee1;
+	}
 
+	li {
+		padding: 0.2em 0;
+	}
+	.icon
+	{
+		margin-left: auto;
+	}
 </style>
