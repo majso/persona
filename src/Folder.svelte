@@ -23,11 +23,10 @@
 	<span class="icon is-clickable">
 		<ion-icon on:click={triggerModal} name="add-circle-outline"></ion-icon>
 	</span>
-	<Modal {showModal} on:click={triggerModal}>
-		<AddFile />
-	</Modal>
 </div>
-
+<Modal {showModal} on:click={triggerModal}>
+	<AddFile />
+</Modal>
 {#if expanded}
 	<ul transition:slide={{duration:300}}>
 		{#each files as file}

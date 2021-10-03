@@ -8,15 +8,8 @@
 
 </script>
 
-<span>{name}</span>
+<span class="menu-item">{name}</span>
 <span on:click={() => {onDelete(name)}}></span>
 
 
 
-<style>
-	span {
-		padding: 0 0 0 1.5em;
-		background: 0 0.1em no-repeat;
-		background-size: 1em 1em;
-	}
-</style>
