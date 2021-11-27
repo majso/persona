@@ -1,12 +1,12 @@
 <script>
-	import File from './File.svelte';
+	import Feed from './Feed.svelte';
 	import Modal from './Modal.svelte';
-	import AddFile from './AddFile.svelte';
+	import AddFeed from './AddFeed.svelte';
 	import {slide} from 'svelte/transition'
 	
 	export let expanded = false;
 	export let name;
-	export let files;
+	export let feeds;
 
 	function toggle() {
 		expanded = !expanded;
@@ -35,16 +35,16 @@
 	</span>
 </div>
 <Modal {showModal} on:click={triggerModal}>
-	<AddFile />
+	<AddFeed />
 </Modal>
 {#if expanded}
 	<ul transition:slide={{duration:300}}>
-		{#each files as file}
+		{#each feeds as feed}
 			<li>
-				{#if file.type === 'folder'}
-					<svelte:self {...file}/>
+				{#if feed.type === 'folder'}
+					<svelte:self {...feed}/>
 				{:else}
-					<File {...file} />
+					<Feed {...feed} />
 				{/if}
 				
 			</li>

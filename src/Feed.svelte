@@ -16,7 +16,7 @@
 
 <span on:click={() => {onDelete(name)}}></span>
 
-
+<!-- styling Feed -->
 <style>
 .icon
 {

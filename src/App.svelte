@@ -1,8 +1,7 @@
 <script>
 	import Menu from './Menu.svelte';
 	import Content from './Content.svelte';
-	import Modal from './Modal.svelte';
-
+	
 </script>
 <svelte:head>
   <link

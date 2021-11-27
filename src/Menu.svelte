@@ -1,22 +1,22 @@
 <script>
 	import Folder from './Folder.svelte';
 	import Modal from './Modal.svelte';
-	import AddFile from './AddFile.svelte';
+	import AddFeed from './AddFeed.svelte';
 	import { onMount } from "svelte";
 
 	let showModal = false;
 	const triggerModal = () => {
 		showModal = !showModal;
 	}
-	let files = []
+	let feeds = []
 	const apiURL = "https://localhost:5001/api/items";
 	onMount(async function() {
         const response = await fetch(apiURL);
-        files = await response.json();
+        feeds = await response.json();
     });
 
 
-	const addFile = (e) => {
+	const addFeed = (e) => {
 
 	console.log(e);
 	}
@@ -47,7 +47,7 @@
 			</div>
 			<Modal {showModal} on:click={triggerModal}>
 			</Modal>
-			<Folder name="RSS Feeds" files={files} expanded />
+			<Folder name="RSS Feeds" feeds={feeds} expanded />
 			<li class="menu-label">
 				Settings
 			</li>
