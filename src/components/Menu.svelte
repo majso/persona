@@ -1,12 +1,8 @@
 <script>
 	import Folder from './Folder.svelte';
-	import AddFeed from './AddFeed.svelte';
 	import { onMount } from "svelte";
 
-	let showModal = false;
-	const triggerModal = () => {
-		showModal = !showModal;
-	}
+
 	let feeds = []
 	const apiURL = "https://localhost:5001/api/feeds";
 	onMount(async function() {
@@ -40,9 +36,6 @@
 			</li>
 			<div class="menu-label icon-text">
 				Folders
-				<span class="icon is-clickable">
-					<ion-icon on:click={triggerModal} name="add-circle-outline"></ion-icon>
-				</span>
 			</div>
 			<Folder name="RSS Feeds" feeds={feeds} expanded />
 			<li class="menu-label">
@@ -69,8 +62,5 @@
 	li {
 		padding: 0.2em 0;
 	}
-	.icon
-	{
-		margin-left: auto;
-	}
+
 </style>

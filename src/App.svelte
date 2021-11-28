@@ -1,7 +1,7 @@
 <script>
-	import Menu from './Menu.svelte';
-	import Content from './Content.svelte';
-	import Modal from './Modal.svelte';
+	import Menu from './components/Menu.svelte';
+	import Content from './components/Content.svelte';
+	import Modal from './components/Modal.svelte';
 
 	
 	let showModal = false;
@@ -19,9 +19,8 @@
 </svelte:head>
 <main>
 	<div class="columns">
+		<Modal {showModal} on:click={triggerModal} />
 		<Menu />
 		<Content />
-		<Modal {showModal} on:click={triggerModal}>
-		</Modal>
 	</div>
 </main>
