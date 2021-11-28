@@ -1,12 +1,12 @@
 <script>
-let file =
+let feed =
 {
   id: 0,
   name: "",
   url: ""
 }
 
-const apiURL = "https://localhost:5001/api/items";
+const apiURL = "https://localhost:5001/api/feeds";
 
 const onSubmit = () => {
 const options = {
@@ -14,7 +14,7 @@ const options = {
   headers: {
       'Content-Type': 'application/json'
     },
-  body: JSON.stringify(file)
+  body: JSON.stringify(feed)
 }
 fetch(apiURL, options);
 
@@ -25,12 +25,12 @@ fetch(apiURL, options);
 <form on:click|preventDefault={onSubmit}>
     <div class="field">
       <p class="control">
-        <input class="input" type="text" placeholder="Name" bind:value={file.name}>
+        <input class="input" type="text" placeholder="Name" bind:value={feed.name}>
       </p>
     </div>
     <div class="field">
       <p class="control">
-        <input class="input" type="text" placeholder="Url" bind:value={file.url}>
+        <input class="input" type="text" placeholder="Url" bind:value={feed.url}>
       </p>
     </div>
     <div class="field is-grouped is-grouped-right">

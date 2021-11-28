@@ -19,7 +19,6 @@
 
 </script>
 <div class="menu-item">
-	
 	<span class="is-clickable" on:click={toggle}>
 		<span class="icon">
 			{#if expanded}

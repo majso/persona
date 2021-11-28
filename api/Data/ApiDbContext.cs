@@ -5,7 +5,7 @@ namespace api.Data
 {
     public class ApiDbContext : DbContext
     {
-        public virtual DbSet<ItemData> Items {get;set;}
+        public virtual DbSet<FeedData> Feeds {get;set;}
 
         public ApiDbContext(DbContextOptions<ApiDbContext> options)
             : base(options)

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace api.Models
  {
-    public class ItemData
+    public class FeedData
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
