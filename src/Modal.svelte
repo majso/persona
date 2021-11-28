@@ -1,5 +1,6 @@
 <script>
      export let showModal = false;
+     
 </script>
 
 <div class="modal" class:is-active={showModal}>
