@@ -1,2 +1,2 @@
-.net 5 
+.net 6
 Svelte
