@@ -17,6 +17,7 @@ const options = {
   body: JSON.stringify(file)
 }
 fetch(apiURL, options);
+
 }
 
 </script>

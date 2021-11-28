@@ -1,6 +1,5 @@
 <script>
 	import Folder from './Folder.svelte';
-	import Modal from './Modal.svelte';
 	import AddFeed from './AddFeed.svelte';
 	import { onMount } from "svelte";
 
@@ -45,8 +44,6 @@
 					<ion-icon on:click={triggerModal} name="add-circle-outline"></ion-icon>
 				</span>
 			</div>
-			<Modal {showModal} on:click={triggerModal}>
-			</Modal>
 			<Folder name="RSS Feeds" feeds={feeds} expanded />
 			<li class="menu-label">
 				Settings
