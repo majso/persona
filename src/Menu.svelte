@@ -8,7 +8,7 @@
 		showModal = !showModal;
 	}
 	let feeds = []
-	const apiURL = "https://localhost:5001/api/items";
+	const apiURL = "https://localhost:5001/api/feeds";
 	onMount(async function() {
         const response = await fetch(apiURL);
         feeds = await response.json();
