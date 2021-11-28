@@ -17,7 +17,7 @@ html, body {
 	font-weight: 700;
   }
   .menu {
-	padding: 4rem 1rem 1rem 2rem;
+	padding: 4rem 1rem 1rem 1rem;
   }
   .menu ion-icon {
   font-size: 16px;
@@ -30,6 +30,7 @@ html, body {
   color: #8F99A3;
   letter-spacing: .1em;
   text-transform: uppercase;
+  display: flex;
   }
   .breadcrumb{
 	margin: 1rem 1rem 0 0;
@@ -43,14 +44,15 @@ html, body {
   .card-footer .footer-text
   {
   padding: 0.4rem 0 0 1rem;
-  min-width: 160px;
   color: #7a7a7a;
   font-size: .75em;
   letter-spacing: .1em;
   text-transform: uppercase;
+  min-width: 160px;
   }
-  .card ion-icon {
+  .card .icon {
   font-size: 24px;
   color: #8F99A3;
+  margin-left: auto;
   }
 

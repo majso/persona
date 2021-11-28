@@ -11,14 +11,13 @@ const apiURL = "https://localhost:5001/api/items";
 const onSubmit = () => {
 const options = {
   method: 'POST',
-  mode: 'cors',
   headers: {
       'Content-Type': 'application/json'
     },
   body: JSON.stringify(file)
 }
 fetch(apiURL, options);
-console.log(file.name, file.url);
+
 }
 
 </script>
