@@ -1,7 +1,7 @@
 <script>
 	import Feed from './Feed.svelte';
 	import Modal from './Modal.svelte';
-	import AddFeed from './components/AddFeed.svelte';
+	import AddFeed from './AddFeed.svelte';
 	import {slide} from 'svelte/transition'
 	
 	export let expanded = false;

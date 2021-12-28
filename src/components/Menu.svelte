@@ -10,13 +10,6 @@
         feeds = await response.json();
     });
 
-
-	const addFeed = (e) => {
-
-	console.log(e);
-	}
-
-
 </script>
 
 <div class="column is-2">
