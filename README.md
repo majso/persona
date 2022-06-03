@@ -9,6 +9,7 @@
 - [ ] ability to have folders 
 - [ ] separate view per folder 
     - [ ] coloring of folders
+- [ ] categories/tags
 - [ ] original page view with session
 - [ ] rules
     - [ ] per folder
