@@ -1,12 +1,2 @@
-/node_modules/
-/public/build/
 /db/
 /.vscode/
-/api/obj/Ddebug
-/api/obj/Debug/net5.0
-/api/bin/
-/api/Migrations/
-.DS_Store
-app.db
-app.db-shm
-app.db-wal
