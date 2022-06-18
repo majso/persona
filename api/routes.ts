@@ -3,10 +3,10 @@ import { getfeeds, getfeed, addfeed, updatefeed, deletefeed } from './controller
 
 const router = new Router()
 
-router.get('/api/v1/feeds', getfeeds)
-    .get('/api/v1/feeds/:id', getfeed)
-    .post('/api/v1/feeds', addfeed)
-    .put('/api/v1/feeds/:id', updatefeed)
-    .delete('/api/v1/feeds/:id', deletefeed)
+router.get('/api/feeds', getfeeds)
+    .get('/api/feeds/:id', getfeed)
+    .post('/api/feeds', addfeed)
+    .put('/api/feeds/:id', updatefeed)
+    .delete('/api/feeds/:id', deletefeed)
 
 export default router

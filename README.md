@@ -14,3 +14,6 @@
 - [ ] rules
     - [ ] per folder
     - [ ] global
+
+- [ ] add miniflux API support
+- [ ] add FEVER API support
