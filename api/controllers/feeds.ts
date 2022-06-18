@@ -1,36 +1,52 @@
 import { Feed } from '../types.ts'
 
+let feeds: Feed[] = [
+    {
+        id:"1",
+        name: "Feed number one",
+        description: "This is feed number one",
+        url: "http://url.com",
+    },
+    {
+        id:"2",
+        name: "Feed number 2",
+        description: "This is feed number 2",
+        url: "http://url2.com",
+    },
+    {
+        id:"3",
+        name: "Feed number 3",
+        description: "This is feed number 3",
+        url: "http://url3.com",
+    }
+]
+
 
 // @desc    Get all feeds
 // @route   GET /api/v1/feeds
-const getfeeds = async ({ response }: { response: any }) => {
-    if (!response) {
-        response.status = 500
+const getfeeds =  ({ response }: { response: any }) => {
         response.body = {
-            success: false,
-            msg: "No Data"
-        }
-    } else {        
-        response.body = {
-        success: true,
-        data: "feeds"
-        }   
-    }
+            success: true,
+            data: feeds
+        }          
 }
 
 // @desc    Get single feed
 // @route   GET /api/v1/feeds/:id
-const getfeed = async ({ params, response }: { params: { id: string }, response: any }) => {
-    if (!response) {
+const getfeed =  ({ params, response }: { params: { id: string }, response: any }) => {
+    const feed: Feed | undefined = feeds.find(f => f.id === params.id)
+
+    if (feed) {
+        response.status = 200
+        response.body = {
+            success: true,
+            data: feed
+        }
+    } else {
         response.status = 404
         response.body = {
             success: false,
-            msg: `No feed with the id of ${params.id}`
-        }
-    } else {
-        response.body = {
-        success: true,
-        data: "feed"
+            msg: "No feed found"
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Router } from 'https://deno.land/x/oak/mod.ts'
+import { Router } from 'https://deno.land/x/oak@v10.6.0/mod.ts'
 import { getfeeds, getfeed, addfeed, updatefeed, deletefeed } from './controllers/feeds.ts'
 
 const router = new Router()
