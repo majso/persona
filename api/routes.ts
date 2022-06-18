@@ -1,12 +1,12 @@
-import { Router } from 'https://deno.land/x/oak@v10.6.0/mod.ts'
-import { getfeeds, getfeed, addfeed, updatefeed, deletefeed } from './controllers/feeds.ts'
+import { Router } from '../deps.ts'
+import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from './controllers/feeds.ts'
 
 const router = new Router()
 
-router.get('/api/feeds', getfeeds)
-    .get('/api/feeds/:id', getfeed)
-    .post('/api/feeds', addfeed)
-    .put('/api/feeds/:id', updatefeed)
-    .delete('/api/feeds/:id', deletefeed)
+router.get('/api/feeds', getFeeds)
+    .get('/api/feeds/:id', getFeed)
+    .post('/api/feeds', addFeed)
+    .put('/api/feeds/:id', updateFeed)
+    .delete('/api/feeds/:id', deleteFeed)
 
 export default router
