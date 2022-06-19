@@ -1,5 +1,5 @@
-import { Router } from '../deps.ts'
-import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from './controllers/feeds.ts'
+import { Router } from '../../deps.ts'
+import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from '../controllers/feeds.ts'
 
 const router = new Router()
 

@@ -16,7 +16,7 @@ const getFeeds =  ({ response }: { response: any }) => {
 // @route   GET /api/v1/feeds/:id
 const getFeed =  ({ params, response }: { params: { id: string }, response: any }) => {
    // const feed: Feed | undefined = feeds.find(f => f.id === params.id)
-    const result = db.query("SELECT id FROM feeds where id = $1", params)
+    const result = db.query("SELECT id FROM feeds where id = ?", [params.id])
     if (result) {
         response.status = 200
         response.body = {
@@ -38,9 +38,9 @@ const addFeed = async ({ request, response }: { request: any, response: any }) =
     const body = await request.body()
     const feed = body.value 
 
-    if (body.hasBody == true) {
+    if (request.hasBody) {
         try {
-            const result = await db.query("INSERT INTO feeds (name, url) VALUES ($1,$2)", feed.name, feed.url)
+            const _result = db.query("INSERT INTO feeds (name, url) VALUES (?, ?)", [feed.name, feed.url])
             response.status = 201
             response.body = {
                 success: true,
