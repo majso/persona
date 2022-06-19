@@ -2,8 +2,8 @@
 
 - [x] Deno
 - [x] Denon
-- [ ] draft of client Typescript
-- [ ] draft of server Deno/Typescript
+- [x] Oak
+
 
 #### Client:
 - [ ] thumbnails 

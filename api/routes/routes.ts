@@ -3,7 +3,11 @@ import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from '../controlle
 
 const router = new Router()
 
-router.get('/api/feeds', getFeeds)
+router
+    .get("/", (context) => {
+        context.response.body = "Hello root!";
+    })
+    .get('/api/feeds', getFeeds)
     .get('/api/feeds/:id', getFeed)
     .post('/api/feeds', addFeed)
     .put('/api/feeds/:id', updateFeed)
