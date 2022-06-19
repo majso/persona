@@ -17,9 +17,9 @@ export const getFeeds =  (ctx: Context) => {
 // @desc    Get single feed
 // @route   GET /api/feeds/:id
 export const getFeed = async (ctx: Context)  => {
-    const params = await ctx.params.id
+    const params: string =  await ctx.params.id
     //TODO: it is not returning properties
-    const result = db.query("SELECT * FROM feeds WHERE id = ?", [params])
+    const result = await db.query("SELECT * FROM feeds WHERE id = ?", [params])
     if (result) {
         ctx.response.status = Status.OK
         ctx.response.body = {
