@@ -4,8 +4,8 @@ import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from '../controlle
 const router = new Router()
 
 router
-    .get("/", (context) => {
-        context.response.body = "Hello root!";
+    .get("/", (ctx) => {
+        ctx.response.body = "Hello root!";
     })
     .get('/api/feeds', getFeeds)
     .get('/api/feeds/:id', getFeed)
