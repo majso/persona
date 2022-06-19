@@ -1,43 +1,27 @@
 import { Feed } from '../types.ts'
-
-let feeds: Feed[] = [
-    {
-        id:"1",
-        name: "Feed number one",
-        url: "http://url.com",
-    },
-    {
-        id:"2",
-        name: "Feed number 2",
-        url: "http://url2.com",
-    },
-    {
-        id:"3",
-        name: "Feed number 3",
-        url: "http://url3.com",
-    }
-]
+import db from '../db/database.ts'
 
 
 // @desc    Get all feeds
 // @route   GET /api/v1/feeds
 const getFeeds =  ({ response }: { response: any }) => {
+        const result = db.query("SELECT * FROM feeds")
         response.body = {
             success: true,
-            data: feeds
+            data: result
         }          
 }
 
 // @desc    Get single feed
 // @route   GET /api/v1/feeds/:id
 const getFeed =  ({ params, response }: { params: { id: string }, response: any }) => {
-    const feed: Feed | undefined = feeds.find(f => f.id === params.id)
-
-    if (feed) {
+   // const feed: Feed | undefined = feeds.find(f => f.id === params.id)
+    const result = db.query("SELECT id FROM feeds where id = $1", params)
+    if (result) {
         response.status = 200
         response.body = {
             success: true,
-            data: feed
+            data: result
         }
     } else {
         response.status = 404
@@ -53,7 +37,30 @@ const getFeed =  ({ params, response }: { params: { id: string }, response: any 
 const addFeed = async ({ request, response }: { request: any, response: any }) => {    
     const body = await request.body()
     const feed = body.value 
-//TODO
+
+    if (body.hasBody == true) {
+        try {
+            const result = await db.query("INSERT INTO feeds (name, url) VALUES ($1,$2)", feed.name, feed.url)
+            response.status = 201
+            response.body = {
+                success: true,
+                data: feed
+            }
+        } catch (error) {
+            response.status = 500
+            response.body = {
+                success: false,
+                msg: error.toString()
+            }
+        }
+
+    } else {
+        response.status = 400
+        response.body = {
+            success: false,
+            msg: "No data"
+        }
+    }
 }
 
 // @desc    Update feed
