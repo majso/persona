@@ -1,4 +1,4 @@
-import { Feed } from '../types.ts'
+import { Feed } from '../types/types.ts'
 import db from '../db/database.ts'
 
 
