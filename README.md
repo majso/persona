@@ -1,7 +1,8 @@
 ### Milestones:
 
-- [x] web-app, tabs 
-- [ ] split client and server in separate repos
+- [x] Deno
+- [ ] draft of client Typescript
+- [ ] draft of server Deno/Typescript
 
 #### Client:
 - [ ] thumbnails 
@@ -14,6 +15,8 @@
 - [ ] rules
     - [ ] per folder
     - [ ] global
+
+#### Server 
 
 - [ ] add miniflux API support
 - [ ] add FEVER API support
