@@ -4,9 +4,6 @@ import { getFeeds, getFeed, addFeed, updateFeed, deleteFeed } from '../controlle
 const router = new Router()
 
 router
-    .get("/", (ctx) => {
-        ctx.response.body = "Hello root!";
-    })
     .get('/api/feeds', getFeeds)
     .get('/api/feeds/:id', getFeed)
     .post('/api/feeds', addFeed)
