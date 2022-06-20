@@ -1,7 +1,5 @@
-import { Feed } from '../types/types.ts'
-import { Status, Context } from '../../deps.ts'
+import { Status, Context, helpers } from '../../deps.ts'
 import db from '../db/database.ts'
-
 
 
 // @desc    Get all feeds
@@ -17,9 +15,9 @@ export const getFeeds =  (ctx: Context) => {
 // @desc    Get single feed
 // @route   GET /api/feeds/:id
 export const getFeed = async (ctx: Context)  => {
-    const params: string =  await ctx.params.id
+    const { id } = helpers.getQuery(ctx, { mergeParams: true });
     //TODO: it is not returning properties
-    const result = await db.query("SELECT * FROM feeds WHERE id = ?", [params])
+    const result = await db.query("SELECT * FROM feeds WHERE id = ?", [id])
     if (result) {
         ctx.response.status = Status.OK
         ctx.response.body = {
@@ -61,13 +59,15 @@ export const addFeed = async (ctx: Context) => {
 
 // @desc    Update feed
 // @route   PUT /api/feeds/:id
-export const updateFeed = async(ctx: Context) => {
+export const updateFeed = (ctx: Context) => {
+    const { id } = helpers.getQuery(ctx, { mergeParams: true });
 //TODO
 }
 
 // @desc    Delete feed
 // @route   DELETE /api/feeds/:id
-export const deleteFeed = async (ctx: Context) => {
+export const deleteFeed =  (ctx: Context) => {
+    const { id } = helpers.getQuery(ctx, { mergeParams: true });
 //TODO
 }
 

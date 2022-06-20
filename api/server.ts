@@ -1,4 +1,5 @@
 import { Application } from '../deps.ts'
+//import models from './models/index.ts'
 import router from './routes/routes.ts'
 
 const port = Deno.env.get("PORT") || 5000
@@ -7,6 +8,10 @@ const app = new Application()
 
 app.use(router.routes())
 app.use(router.allowedMethods())
+
+router.get("/", (ctx) => {
+  ctx.response.body = "Hello root!";
+})
 
 app.addEventListener("listen", ({ hostname, port, secure }) => {
     console.log(
