@@ -1,6 +1,6 @@
 import { Application } from '../deps.ts'
 //import models from './models/index.ts'
-import router from './routes/routes.ts'
+import router from './routes/feed.ts'
 
 const port = Deno.env.get("PORT") || 5000
 

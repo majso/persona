@@ -1,5 +1,11 @@
 import { Status, Context, helpers } from '../../deps.ts'
+// import { Feed } from '../models/feed.ts'
+// import { Category } from '../models/category.ts'
 import db from '../db/database.ts'
+
+// TODO: try/catching all requests
+// TODO: include models
+// TODO: include categories
 
 
 // @desc    Get all feeds
@@ -60,14 +66,14 @@ export const addFeed = async (ctx: Context) => {
 // @desc    Update feed
 // @route   PUT /api/feeds/:id
 export const updateFeed = (ctx: Context) => {
-    const { id } = helpers.getQuery(ctx, { mergeParams: true });
+    const { _id } = helpers.getQuery(ctx, { mergeParams: true });
 //TODO
 }
 
 // @desc    Delete feed
 // @route   DELETE /api/feeds/:id
 export const deleteFeed =  (ctx: Context) => {
-    const { id } = helpers.getQuery(ctx, { mergeParams: true });
+    const { _id } = helpers.getQuery(ctx, { mergeParams: true });
 //TODO
 }
 
