@@ -7,11 +7,10 @@ import db from '../db/database.ts'
 // TODO: include models
 // TODO: include categories
 
-
 // @desc    Get all feeds
 // @route   GET /api/feeds
-export const getFeeds =  (ctx: Context) => {
-        const result = db.query("SELECT * FROM feeds")
+export const getFeeds = async (ctx: Context) => {
+        const result = await db.query("SELECT * FROM feeds")
         ctx.response.status = Status.OK
         ctx.response.body = {
             data: result

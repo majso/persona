@@ -1,6 +1,6 @@
 import { DB } from '../../deps.ts';
 
-const db = new DB('./api/db/database.sqlite');
+const db = new DB('./server/db/database.sqlite');
 
 db.query(`
   CREATE TABLE IF NOT EXISTS feeds (
