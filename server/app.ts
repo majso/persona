@@ -3,6 +3,7 @@ import { Application } from '../deps.ts'
 import router from './routes/feed.ts'
 
 const port = Deno.env.get("PORT") || 5000,
+      hostname = '127.0.0.1',
       alpnProtocols = ["h2", "http/1.1"];
 
 const app = new Application()
@@ -25,4 +26,4 @@ app.addEventListener("listen", ({ hostname, port, secure }) => {
 
 console.log(`Server running on ${port}`)
 
-await app.listen({ port: +port, alpnProtocols })
+await app.listen({ hostname, port: +port, alpnProtocols })
