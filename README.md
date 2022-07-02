@@ -37,3 +37,7 @@ https://github.com/pietheinstrengholt/rssmonster
 https://lume.land/
 
 https://htmx.org/docs/
+
+https://qwik.builder.io/docs/overview
+
+https://preactjs.com/
