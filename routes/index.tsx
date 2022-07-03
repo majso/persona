@@ -23,6 +23,7 @@ export default function Home() {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:type" content="website" />
       </Head>
+      <html class= {tw`dark`}>
       <div class={tw`flex flex-col min-h-screen m-0`}>
         <div class={tw`flex-1`}>
           <NavigationBar active="/"  />
@@ -34,6 +35,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      </html>
+
     </>
   );
 }
