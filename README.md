@@ -1,6 +1,6 @@
 persona RSS reader
 
-This is a draft project as a test of fresh framework and deno
+This is a playground project as a test of fresh framework and deno
 
 ### Usage
 

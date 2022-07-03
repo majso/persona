@@ -18,7 +18,7 @@ export default function NavigationBar(props: { active: string }) {
 
   return (
     <nav class={tw`border-b underline py-2`}>
-      <ul class={tw`flex justify-end gap-8 mx-4`}>
+      <ul class={tw`flex justify-end gap-8 mx-2`}>
         {items.map((item) => (
           <li>
             <a
