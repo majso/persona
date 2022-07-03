@@ -14,10 +14,9 @@ export default function Section() {
       </a>
     </div>
 
-    <ul class={tw`relative px-1`}>
-    <Folder />
-    </ul>
 
+    <Folder />
+    
     </div>
 
   );
