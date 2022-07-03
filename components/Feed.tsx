@@ -17,7 +17,7 @@ const feeds = [
     },
     {
         name: "Techweb",
-        folder: "Tech News",
+        folder: "Blogs",
         url: "www.test.dsd"
     },
     {

@@ -19,7 +19,7 @@ export default function Folder() {
   ];
   return (
     <ul class={tw`relative px-1`}>
-                <div class={tw`flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded`}>
+      <div class={tw`flex border-b items-center text-sm py-2 px-6 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap rounded`}>
         <span>FEEDS</span>
       </div>
       {folders.map((folder) => (

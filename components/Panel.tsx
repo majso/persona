@@ -48,10 +48,8 @@ export default function Panel() {
   return (
     <>
       {panels.map((panel) => (
-        <div class={tw`border bg-white max-w-xs`}>
-          <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+        <div class={tw` bg-white max-w-xs max-h-[26rem] border`}>
             <img class={tw``} src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt=""/>
-          </a>
           <div class={tw`p-6`}>
             <h5 class={tw`text-gray-900 text-base font-medium mb-2`}>{panel.name}</h5>
             <p class={tw`text-gray-700 text-sm mb-4`}>
