@@ -1,4 +1,4 @@
-RSS reader
+persona RSS reader
 
 This is a draft project as a test of fresh framework and deno
 
