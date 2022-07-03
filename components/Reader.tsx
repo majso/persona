@@ -1,12 +1,12 @@
 /** @jsx h */
 
 import { h } from "preact";
+import { tw } from "@twind";
 
-import Article from "../components/Article.tsx";
+import Panel from "../components/Panel.tsx";
 
 export default function Reader() {
   return (
-        // <Feeds />   
-        <Article />
+        <Panel />
   );
 }

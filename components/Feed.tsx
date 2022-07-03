@@ -16,6 +16,31 @@ const feeds = [
         url: "www.test.dsd"
     },
     {
+        name: "Techweb",
+        folder: "Tech News",
+        url: "www.test.dsd"
+    },
+    {
+        name: "Techweb",
+        folder: "Tech News",
+        url: "www.test.dsd"
+    },
+    {
+        name: "Sciencenews",
+        folder: "Science",
+        url: "www.test.dsd"
+    },
+    {
+        name: "Sciencenews",
+        folder: "Science",
+        url: "www.test.dsd"
+    },
+    {
+        name: "Sciencenews",
+        folder: "Science",
+        url: "www.test.dsd"
+    },
+    {
         name: "Sciencenews",
         folder: "Science",
         url: "www.test.dsd"
