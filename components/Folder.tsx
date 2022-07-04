@@ -21,7 +21,9 @@ export default function Folder() {
     <ul class={tw`relative px-1`}>
       <div class={tw`flex border-b items-center text-sm py-2 px-2 h-12 overflow-hidden text-gray-700 text-ellipsis whitespace-nowrap`}>
         <span>FEEDS</span>
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sliders-h" class={tw`w-3 h-3 ml-auto`}  role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>
+        <a class={tw`w-3 h-3 ml-auto hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out cursor-pointer rounded`} href="/folder" title="Add Folder">
+          <svg  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sliders-h" class={tw`w-3 h-3 `}  role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>
+        </a>
       </div>
       {folders.map((folder) => (
         <li class={tw`relative`}> 
