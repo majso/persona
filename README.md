@@ -27,5 +27,4 @@ This will watch the project directory and restart as necessary.
 
 #### Server 
 
-- [ ] add miniflux API support
-- [ ] add FEVER API support
+- [ ] add Miniflux API support
