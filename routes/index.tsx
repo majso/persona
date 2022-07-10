@@ -10,8 +10,7 @@ import Sidebar from "../components/Sidebar.tsx";
 import Reader from "../components/Reader.tsx";
 
 const TITLE = "persona - The next-gen RSS reader";
-const DESCRIPTION =
-  "Lightweight RSS reader";
+const DESCRIPTION = "Lightweight RSS reader";
 
 export default function Home() {
   return (
