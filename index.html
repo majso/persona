@@ -1,15 +1,11 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RSS Reader</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
   <div class="container">
     <!-- Categories -->
@@ -17,19 +13,14 @@
       <h2>Categories</h2>
       <ul id="categoryList"></ul>
     </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <h1>RSS Entries</h1>
-
-      <!-- Example entry blocks -->
-      <div class="entry-column" id="entryColumn"></div>
-
-      <!-- Add more entry columns dynamically based on data from the API -->
-    </main>
+    <div class="feeds">
+      <ul id="feedList"></ul>
+    </div>
+    <!-- Entries Grid -->
+    <div class="entries-grid" id="entryGrid"></div>
   </div>
+
+  <!-- Include the bundled JavaScript -->
   <script src="js/app.js"></script>
 </body>
-
 </html>
-
