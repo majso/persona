@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Track the selected category and feed
   let selectedCategory = null;
   let selectedFeed = null;
-
+  
   // Add event listener to category list
   document.getElementById('categoryList').addEventListener('click', function (event) {
     if (event.target.tagName === 'LI') {
@@ -267,14 +267,12 @@ function toggleStarred(entryId, currentStarred) {
   const newStarred = !currentStarred; // Toggle the starred status
   console.log(`Starred status for entry ${entryId} updated to: ${newStarred}`);
 
-  fetch(`${baseUrl}/v1/entries/${entryId}`, {
+  fetch(`${baseUrl}/v1/entries/${entryId}/bookmark`, {
     mode: 'cors',
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json',
       'X-Auth-Token': authToken,
-    },
-    body: JSON.stringify({ starred: newStarred }),
+    }
   }).then(() => fetchEntryById(entryId));
 }
 
