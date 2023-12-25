@@ -110,17 +110,21 @@ ul {
 }
 
 .entry-block h3 {
-  font-size: 1.2rem;
-  margin: 6px;
-  margin-bottom: 10px;
+  text-align: left;
+  font-size: 0.8rem;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .entry-block p {
-  font-size: 1rem;
+  text-align: justify;
+  font-weight: narrow;
+  font-size: 0.7rem;
   margin: 6px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .entry-footer {

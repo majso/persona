@@ -99,7 +99,7 @@ function displayCategories(categories) {
 
 function fetchEntriesByCategory(categoryId) {
   // Use the baseUrl variable to construct the full API endpoint
-  fetch(`${baseUrl}/v1/categories/${categoryId}/entries?limit=8&order=published_at&direction=desc`, {
+  fetch(`${baseUrl}/v1/categories/${categoryId}/entries?limit=20&order=published_at&direction=desc`, {
     mode:  'cors',
     headers: {
       'X-Auth-Token': authToken
@@ -303,7 +303,7 @@ function extractFirstImage(content) {
 }
 
 // Function to truncate content to a certain length
-function truncateContent(content, maxLength = 150) {
+function truncateContent(content, maxLength = 300) {
   // Remove HTML tags (including images) from the content
   const plainTextContent = content.replace(/<[^>]*>/g, '');
 
