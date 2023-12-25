@@ -3,7 +3,45 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Fetch categories from the API
   fetchCategories();
-  
+
+  // Track the selected category and feed
+  let selectedCategory = null;
+  let selectedFeed = null;
+
+  // Add event listener to category list
+  document.getElementById('categoryList').addEventListener('click', function (event) {
+    if (event.target.tagName === 'LI') {
+      const categoryId = event.target.dataset.categoryId;
+      fetchEntriesByCategory(categoryId);
+      fetchFeedsForCategory(categoryId);
+
+      // Remove the 'selected' class from the previously selected category
+      if (selectedCategory) {
+        selectedCategory.classList.remove('selected');
+      }
+
+      // Add the 'selected' class to the newly selected category
+      event.target.classList.add('selected');
+      selectedCategory = event.target;
+    }
+  });
+
+  // Add event listener to feed list
+  document.getElementById('feedList').addEventListener('click', function (event) {
+    if (event.target.tagName === 'LI') {
+      const feedId = event.target.dataset.feedId;
+      fetchEntriesForFeed(feedId);
+
+      // Remove the 'selected' class from the previously selected feed
+      if (selectedFeed) {
+        selectedFeed.classList.remove('selected');
+      }
+
+      // Add the 'selected' class to the newly selected feed
+      event.target.classList.add('selected');
+      selectedFeed = event.target;
+    }
+  });
   // Add event listener to category list
   document.getElementById('categoryList').addEventListener('click', function (event) {
     if (event.target.tagName === 'LI') {

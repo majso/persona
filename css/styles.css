@@ -25,6 +25,10 @@ ul {
   font-size: 1.5rem;
 }
 
+.selected {
+  border: 1px solid #477ce6 !important;;
+}
+
 #categoryList {
   list-style-type: none;
   padding: 0;
