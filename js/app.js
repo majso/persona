@@ -248,7 +248,7 @@ function getStarIcon(starred) {
   if (starred) {
     return `💙`; // Starred icon
   } else {
-    return `🤍`; // Unstarred icon
+    return `🖤`; // Unstarred icon
   }
 }
 
@@ -257,7 +257,7 @@ function getReadIndicator(read) {
   if (read) {
     return `🔵`; // Read indicator
   } else {
-    return `⚪`; // Unread indicator
+    return `⚫`; // Unread indicator
   }
 }
 
