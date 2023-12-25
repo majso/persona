@@ -86,11 +86,10 @@ ul {
   border-radius: 3px;
   padding: 0px;
   text-align: center;
-  transition: transform 0.3s;
 }
 
 .entry-block:hover {
-  transform: scale(1.03);
+  border: 1px solid #b8bed9;
 }
 
 .entry-block img {

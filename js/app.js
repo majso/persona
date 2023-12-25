@@ -164,10 +164,10 @@ function fetchEntryById(entryId) {
 function updateEntryInUI(entry) {
   // Update the UI to reflect the changes in the entry
   // You can update the entry block using the entry data
-  const entryBlock = document.querySelector(`[data-entry-id="${entry.id}"]`);
-  if (!entryBlock) {
-    entryBlock = createEntryBlock(entry);
-    entryGrid.appendChild(entryBlock);
+  let entryBlock = document.querySelector(`[data-entry-id="${entry.id}"]`);
+  if (entryBlock) {
+    const newEntryBlock = createEntryBlock(entry);
+    entryBlock.replaceWith(newEntryBlock);
   }
 }
 
@@ -175,6 +175,7 @@ function updateEntryInUI(entry) {
 function createEntryBlock(entry) {
   const entryBlock = document.createElement('div');
   entryBlock.classList.add('entry-block');
+  entryBlock.dataset.entryId = entry.id;
   
   // Extract the first image from the content
   const firstImage = extractFirstImage(entry.content);
@@ -207,18 +208,18 @@ function createEntryBlock(entry) {
 // Function to get the correct star icon based on the starred status
 function getStarIcon(starred) {
   if (starred) {
-    return `🤍`; // Starred icon
+    return `💙`; // Starred icon
   } else {
-    return `🖤`; // Unstarred icon
+    return `🤍`; // Unstarred icon
   }
 }
 
 // Function to get the correct read indicator based on the read status
 function getReadIndicator(read) {
   if (read) {
-    return `⚪`; // Read indicator
+    return `🔵`; // Read indicator
   } else {
-    return `⚫`; // Unread indicator
+    return `⚪`; // Unread indicator
   }
 }
 
