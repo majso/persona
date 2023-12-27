@@ -313,9 +313,14 @@ function createEntryBlock(entry) {
   // Extract the first image from the content
   const firstImage = extractFirstImage(entry.content);
 
+  // Check if an image was found
+  const imageElement = firstImage ?
+      `<img src="${firstImage}" alt="${entry.title}">` :
+     `<br>`;  // Use an empty string if no image is found
+
   entryBlock.innerHTML = `
-    <img src="${firstImage}" alt="${entry.title}">
-    <h3>${entry.title}</h3>
+    ${imageElement}
+    <h3><a href="${entry.url}" target="_blank">${entry.title}</a></h3>   
     <p>${truncateContent(entry.content)}</p>
     <div class="entry-footer">
       <span class="published-date">${
@@ -397,8 +402,7 @@ function toggleRead(entryId, currentRead) {
 // Function to extract the first image from the content
 function extractFirstImage(content) {
   const match = content.match(/<img [^>]*src=['"]([^'"]+)['"][^>]*>/);
-  return match ? match[1] :
-                 'placeholder-image-url';  // Provide a placeholder image URL if
+  return match ? match[1] : null;  // TODO: Provide a placeholder image URL if
   // no image is found
 }
 

@@ -132,6 +132,20 @@ ul {
   margin-bottom: 0px;
 }
 
+.entry-block h3 a {
+  color: #adbac7; /* Default color */
+  text-decoration: none;
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.entry-block h3 a:hover {
+  color: #477ce6; /* Color on hover */
+}
+
+.entry-block h3 a:visited {
+  color: #8097c5; /* Color for visited link */
+}
+
 .entry-block p {
   text-align: justify;
   font-weight: narrow;
