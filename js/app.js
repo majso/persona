@@ -13,25 +13,32 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('statusList')
       .addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
+          // Check if the clicked status is already selected
+          const isStatusSelected = event.target.classList.contains('selected');
           // Remove the 'selected' class from the previously selected status
           if (selectedStatus) {
             selectedStatus.classList.remove('selected');
           }
-
-          // Add the 'selected' class to the newly selected status
-          event.target.classList.add('selected');
-          selectedStatus = event.target;
-
-          // Determine the status based on the clicked item
-          const status = selectedStatus.dataset.status;
-
-          // Fetch entries, considering selected category and feed
+          // If the clicked status was not selected, add the 'selected' class
+          // and update the selection
+          if (!isStatusSelected) {
+            event.target.classList.add('selected');
+            selectedStatus = event.target;
+          } else {
+            // If the clicked status was already selected, reset the
+            // selectedStatus
+            selectedStatus = null;
+          }
+          // Fetch entries based on the selected filters
           fetchEntries(
-              status === 'unread' ? 'unread' :
-                                    (status === 'read' ? 'read' : null),
+              selectedStatus && selectedStatus.dataset.status == 'unread' ?
+                  'unread' :
+                  (selectedStatus && selectedStatus.dataset.status == 'read' ?
+                       'read' :
+                       null),
               selectedCategory ? selectedCategory.dataset.categoryId : null,
               selectedFeed ? selectedFeed.dataset.feedId : null,
-              status === 'favorites');
+              selectedStatus && selectedStatus.dataset.status === 'favorites')
         }
       });
 
@@ -39,8 +46,27 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('categoryList')
       .addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
-          const categoryId = event.target.dataset.categoryId;
-          fetchFeedsForCategory(categoryId);
+          // Check if the clicked category is already selected
+          const isCategorySelected =
+              event.target.classList.contains('selected');
+          // Remove the 'selected' class from the previously selected category
+          if (selectedCategory) {
+            selectedCategory.classList.remove('selected');
+          }
+
+          // If the clicked category was not selected, add the 'selected' class
+          // and update the selection
+          if (!isCategorySelected) {
+            event.target.classList.add('selected');
+            selectedCategory = event.target;
+          } else {
+            // If the clicked category was already selected, reset the
+            // selectedCategory
+            selectedCategory = null;
+          }
+          fetchFeedsForCategory(
+              selectedCategory ? selectedCategory.dataset.categoryId : null);
+
           // Fetch entries by category, combining with selected status and
           // starred status
           fetchEntries(
@@ -49,19 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
                   (selectedStatus && selectedStatus.dataset.status == 'read' ?
                        'read' :
                        null),
-              categoryId, null,
+              selectedCategory ? selectedCategory.dataset.categoryId : null,
+              selectedFeed ? selectedFeed.dataset.feedId : null,
               selectedStatus && selectedStatus.dataset.status === 'favorites' ?
                   true :
                   null);
-
-          // Remove the 'selected' class from the previously selected category
-          if (selectedCategory) {
-            selectedCategory.classList.remove('selected');
-          }
-
-          // Add the 'selected' class to the newly selected category
-          event.target.classList.add('selected');
-          selectedCategory = event.target;
         }
       });
 
@@ -69,8 +87,21 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('feedList')
       .addEventListener('click', function(event) {
         if (event.target.tagName === 'LI') {
-          const feedId = event.target.dataset.feedId;
-
+          // Check if the clicked feed is already selected
+          const isFeedSelected = event.target.classList.contains('selected');
+          // Remove the 'selected' class from the previously selected feed
+          if (selectedFeed) {
+            selectedFeed.classList.remove('selected');
+          }
+          // If the clicked feed was not selected, add the 'selected' class and
+          // update the selection
+          if (!isFeedSelected) {
+            event.target.classList.add('selected');
+            selectedFeed = event.target;
+          } else {
+            // If the clicked feed was already selected, reset the selectedFeed
+            selectedFeed = null;
+          }
           // Fetch entries for feed, combining with selected status, category,
           // and starred status
           fetchEntries(
@@ -80,17 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
                        'read' :
                        null),
               selectedCategory ? selectedCategory.dataset.categoryId : null,
-              feedId,
+              selectedFeed ? selectedFeed.dataset.feedId : null,
               selectedStatus && selectedStatus.dataset.status === 'favorites');
-
-          // Remove the 'selected' class from the previously selected feed
-          if (selectedFeed) {
-            selectedFeed.classList.remove('selected');
-          }
-
-          // Add the 'selected' class to the newly selected feed
-          event.target.classList.add('selected');
-          selectedFeed = event.target;
         }
       });
 });
@@ -144,6 +166,9 @@ function fetchEntries(status, categoryId, feedId, starred) {
   if (starred !== undefined) {
     queryParams.push(`starred=${starred}`);
   }
+  queryParams.push(`limit=20`);
+  queryParams.push(`order=published_at`);
+  queryParams.push(`direction=desc`);
 
   // Construct the full API endpoint with the query string
   const queryString = queryParams.join('&');
@@ -185,18 +210,22 @@ function fetchEntriesByCategory(categoryId) {
 
 // Function to fetch feeds for a specific category
 function fetchFeedsForCategory(categoryId) {
-  fetch(
-      `${baseUrl}/v1/categories/${categoryId}/feeds`,
-      {mode: 'cors', headers: {'X-Auth-Token': authToken}})
-      .then(response => response.json())
-      .then(feeds => {
-        // Display feeds in the UI
-        displayFeeds(feeds);
-      })
-      .catch(error => {
-        console.error(
-            `Error fetching feeds for category ${categoryId}:`, error);
-      });
+  if (categoryId) {
+    fetch(
+        `${baseUrl}/v1/categories/${categoryId}/feeds`,
+        {mode: 'cors', headers: {'X-Auth-Token': authToken}})
+        .then(response => response.json())
+        .then(feeds => {
+          // Display feeds in the UI
+          displayFeeds(feeds);
+        })
+        .catch(error => {
+          console.error(
+              `Error fetching feeds for category ${categoryId}:`, error);
+        });
+  } else {
+    displayFeeds();
+  }
 }
 
 // Function to fetch entries for a specific feed
@@ -242,12 +271,14 @@ function displayFeeds(feeds) {
   feedList.innerHTML = '';
 
   // Display each feed as a list item
-  feeds.forEach(feed => {
-    const listItem = document.createElement('li');
-    listItem.textContent = feed.title;
-    listItem.dataset.feedId = feed.id;
-    feedList.appendChild(listItem);
-  });
+  if (feeds) {
+    feeds.forEach(feed => {
+      const listItem = document.createElement('li');
+      listItem.textContent = feed.title;
+      listItem.dataset.feedId = feed.id;
+      feedList.appendChild(listItem);
+    });
+  }
 }
 
 function displayEntries(entries) {
@@ -368,7 +399,7 @@ function extractFirstImage(content) {
   const match = content.match(/<img [^>]*src=['"]([^'"]+)['"][^>]*>/);
   return match ? match[1] :
                  'placeholder-image-url';  // Provide a placeholder image URL if
-                                           // no image is found
+  // no image is found
 }
 
 // Function to truncate content to a certain length
