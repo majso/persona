@@ -313,15 +313,19 @@ function createEntryBlock(entry) {
   // Extract the first image from the content
   const firstImage = extractFirstImage(entry.content);
 
+  // Check if the entry URL contains an M4A file
+  const m4aUrlRegex = /(.*\.m4a)$/i;
+  const m4aUrlMatch = entry.url.match(m4aUrlRegex);
+
   // Check if an image was found
   const imageElement = firstImage ?
-      `<img src="${firstImage}" alt="${entry.title}">` :
+      `<img src="${firstImage}" alt="${entry.title}" onerror="handleImageError(this)">` :
      `<br>`;  // Use an empty string if no image is found
 
   entryBlock.innerHTML = `
     ${imageElement}
     <h3><a href="${entry.url}" target="_blank">${entry.title}</a></h3>   
-    <p>${truncateContent(entry.content)}</p>
+    <p>${truncateContent(entry.content, 300, m4aUrlMatch)}</p>
     <div class="entry-footer">
       <span class="published-date">${
       formatPublishedDate(entry.published_at)}</span>
@@ -407,9 +411,15 @@ function extractFirstImage(content) {
 }
 
 // Function to truncate content to a certain length
-function truncateContent(content, maxLength = 300) {
+function truncateContent(content, maxLength, audio) {
   // Remove HTML tags (including images) from the content
   const plainTextContent = content.replace(/<[^>]*>/g, '');
+
+  if (audio) {
+    // Display the M4A file as an audio player
+    const audioSrc = audio[1];
+    return `<audio controls><source src="${audioSrc}" type="audio/mp4">Your browser does not support the audio tag.</audio>`;
+  }
 
   // Truncate the plain text content to the specified length
   return plainTextContent.length > maxLength ?
@@ -421,4 +431,11 @@ function truncateContent(content, maxLength = 300) {
 function formatPublishedDate(publishedDate) {
   // Implement your own formatting logic if needed
   return new Date(publishedDate).toLocaleString();
+}
+
+// Function to handle image loading errors
+function handleImageError(imgElement) {
+  // Replace the broken image with a line break
+  imgElement.style.display = 'none'; // Hide the broken image
+  imgElement.insertAdjacentHTML('afterend', '<br>'); // Insert a line break after the image
 }
